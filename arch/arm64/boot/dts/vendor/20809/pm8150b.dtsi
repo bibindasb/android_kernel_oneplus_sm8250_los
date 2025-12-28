@@ -418,6 +418,7 @@
 				qcom,hw-settle-time = <200>;
 				qcom,pre-scaling = <1 1>;
 			};
+			//#ifdef OPLUS_FEATURE_CHG_BASIC
 			chgID_voltage_adc {
 				reg = <ADC_GPIO3>;
 				label = "chgID_voltage_adc";

@@ -2,34 +2,32 @@
 # Copyright (C) 2018-2020 Oplus. All rights reserved.
 vendor := $(srctree)/$(src)
 
-#ifndef OPLUS_BUG_STABILITY
-#ifneq "$(wildcard $(vendor)/qcom)" ""
-#	subdir-y += qcom
-#endif
-#else
-#subdir-y += qcom
-# SM8250
-# 8
+ifeq ($(strip $(BRAND_SHOW_FLAG)), oneplus)
+#oneplus SM8250 project
 subdir-y += 19821
-# 8 tmo
 subdir-y += 19855
-# 8 pro
 subdir-y += 19811
-# 8T
 subdir-y += 19805
-# 8T tmo
 subdir-y += 20809
-# 9R
 subdir-y += 20828
-# Find X3
+else
+#oppo SM8250 project
+subdir-y += 19065
+subdir-y += 19066
+subdir-y += 19161
+subdir-y += 20135
 subdir-y += 20061
-# GT Master Explorer edition
+subdir-y += 20161
+subdir-y += 20351
+subdir-y += 21027
+#realme SM8250 project
+subdir-y += 19795
+subdir-y += 19795_t0_evt2
+subdir-y += 20607
+subdir-y += 19705
+subdir-y += 19705_t0_evt2
 subdir-y += 21615
-# GT Neo 2
 subdir-y += 21619
-# SM7250
-# Nord
-subdir-y += 20801
-# Nord CE
-subdir-y += 20813
-#endif
+subdir-y += 21623
+subdir-y += 21733
+endif

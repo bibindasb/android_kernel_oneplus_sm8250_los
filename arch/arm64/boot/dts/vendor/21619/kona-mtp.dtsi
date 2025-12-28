@@ -161,6 +161,11 @@
 		track,wired_fast_chg_scheme = <1>;
 	};
 
+	oplus_battery_log: oplus,battery_log {
+		compatible = "oplus,battery_log";
+		oplus,battery_log_support;
+	};
+
 	//#ifdef OPLUS_FEATURE_CONNFCSOFT
 	nfc_chipset {
 		compatible = "oplus-nfc-chipset";
@@ -957,6 +962,7 @@
 		      <&pm8150b_vadc ADC_USB_IN_I>,
 		      <&pm8150b_vadc ADC_SBUx>,
 		      <&pm8150b_vadc ADC_VPH_PWR>,
+//#ifdef OPLUS_FEATURE_CHG_BASIC
 		      <&pm8150b_vadc ADC_CHG_TEMP>,
 			  //<&pm8150b_vadc ADC_GPIO3>,
 			  <&pm8150b_vadc ADC_AMUX_THM4_PU2>,
@@ -968,6 +974,7 @@
 			   "usb_in_current",
 			   "sbux_res",
 			   "vph_voltage",
+//#ifdef OPLUS_FEATURE_CHG_BASIC
 			   "chg_temp",
 			   //"chgID_voltage_adc",
 			   "usb_temp_adc",
@@ -1018,6 +1025,7 @@
 	};
 };
 
+//#ifndef OPLUS_FEATURE_CHG_BASIC
 /*
 &smb1390 {
 	pinctrl-names = "default";
@@ -1641,6 +1649,7 @@ board_temp-usr {
 	};
 };
 
+//#ifdef OPLUS_FEATURE_CHG_BASIC
 &qupv3_se5_i2c {
 	status = "okay";
 	qcom,clk-freq-out = <400000>;
@@ -1874,6 +1883,7 @@ board_temp-usr {
 //#endif
 
 
+//#ifdef OPLUS_FEATURE_CHG_BASIC
 &pm8150b_charger {
 			//for smb5:
 			qcom,usb-icl-ua = <2000000>;

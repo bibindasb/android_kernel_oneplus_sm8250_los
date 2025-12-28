@@ -1369,7 +1369,7 @@ static inline u64 max_vruntime(u64 max_vruntime, u64 vruntime)
 #define ALLOCATOR_THREAD_NAME "allocator-servi"
 #define CAMERA_PROVIDER_NAME "provider@2.4-se"
 
-#define CAMERA_MAINTHREAD_NAME "com.oplus.camera"
+#define CAMERA_MAINTHREAD_NAME "com.oppo.camera"
 #define OPLUS_CAMERA_MAINTHREAD_NAME "om.oplus.camera"
 #define CAMERA_PREMR_NAME "previewManagerR"
 #define CAMERA_PREPT_NAME "PreviewProcessT"
@@ -2423,7 +2423,7 @@ int get_st_group_id(struct task_struct *task)
 	rcu_read_lock();
 	grp = task_cgroup(task, subsys_id);
 	rcu_read_unlock();
-	return grp->id;
+	return cgroup_id(grp);
 #else
 	return 0;
 #endif
@@ -2936,6 +2936,9 @@ static int __init oplus_sched_assist_init(void)
 
 #endif
 
+#if defined(CONFIG_OPLUS_FEATURE_ASYNC_BINDER_INHERIT_UX)
+	oplus_binder_sysfs_init();
+#endif /* defined(CONFIG_OPLUS_FEATURE_ASYNC_BINDER_INHERIT_UX) */
 	return 0;
 
 #ifdef CONFIG_OPLUS_UX_IM_FLAG

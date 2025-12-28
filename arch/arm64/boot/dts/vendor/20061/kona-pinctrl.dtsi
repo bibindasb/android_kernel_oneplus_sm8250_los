@@ -268,6 +268,7 @@
 				config {
 					pins = "gpio34", "gpio35";
 					drive-strength = <2>;
+					//#ifdef OPLUS_FEATURE_CHG_BASIC
 					input-enable;
 					bias-disable;
 					//#else
@@ -4168,6 +4169,7 @@
 				};
 			};
 
+			//#ifdef OPLUS_FEATURE_CHG_BASIC
 			qupv3_se16_i2c_pulldown: qupv3_se16_i2c_pulldown {
 				mux {
 					pins = "gpio48", "gpio49";

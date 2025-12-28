@@ -103,7 +103,7 @@
 		};
 
 		//#ifdef OPLUS_FEATURE_FINGERPRINT
-		oplus_fp_common{
+		oppo_fp_common{
 			gpio_id2_default: gpio_id2_default {
 				mux {
 					pins = "gpio77";
@@ -255,6 +255,7 @@
 					pins = "gpio34", "gpio35";
 					drive-strength = <2>;
 					bias-disable;
+					//bias-pull-down;
 				};
 			};
 
@@ -268,6 +269,7 @@
 				config {
 					pins = "gpio34", "gpio35";
 					drive-strength = <2>;
+					//#ifdef OPLUS_FEATURE_CHG_BASIC
 					input-enable;
 					//bias-disable;
 					//#else
@@ -4235,6 +4237,7 @@
 				};
 			};
 
+			//#ifdef OPLUS_FEATURE_CHG_BASIC
 			qupv3_se16_i2c_pulldown: qupv3_se16_i2c_pulldown {
 				mux {
 					pins = "gpio48", "gpio49";

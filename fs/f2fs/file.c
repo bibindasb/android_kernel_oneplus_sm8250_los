@@ -6532,6 +6532,15 @@ static int f2fs_ioc_set_pin_file(struct file *filp, unsigned long arg)
 	}
 #endif
 
+#ifdef CONFIG_F2FS_FS_DEDUP
+	mark_file_modified(inode);
+	if (f2fs_is_outer_inode(inode)) {
+		ret = f2fs_revoke_deduped_inode(inode, __func__);
+		if (ret)
+			goto out;
+	}
+#endif
+
 	if (f2fs_pin_file_control(inode, false)) {
 		ret = -EAGAIN;
 		goto out;

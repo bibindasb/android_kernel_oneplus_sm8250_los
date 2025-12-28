@@ -418,6 +418,7 @@
 				qcom,hw-settle-time = <200>;
 				qcom,pre-scaling = <1 1>;
 			};
+			//#ifdef OPLUS_FEATURE_CHG_BASIC
 			usb_temp_adc {
 				reg = <ADC_AMUX_THM4_PU2>;
 				label = "usb_temp_adc";
