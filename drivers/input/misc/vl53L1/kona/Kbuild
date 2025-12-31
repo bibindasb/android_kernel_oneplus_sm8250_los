@@ -3,7 +3,11 @@
 #
 
 ccflags-y	+= -I$(src)/inc -I$(src)/ipp -I$(src)
-ccflags-y += -Itechpack/camera/drivers/cam_sensor_module/cam_cci
+ifeq ($(strip $(BRAND_SHOW_FLAG)), oneplus)
+ccflags-y += -Itechpack/oneplus/camera/drivers/cam_sensor_module/cam_cci
+else
+ccflags-y += -Itechpack/oppo-realme/camera/drivers/cam_sensor_module/cam_cci
+endif
 
 # define this environment variable if you want to compile driver for an old
 # kernel

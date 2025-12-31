@@ -1,8 +1,26 @@
 # SPDX-License-Identifier: GPL-2.0-only
 TECHPACK?=y
 
-techpack-dirs := $(shell find $(srctree)/techpack -maxdepth 1 -mindepth 1 -type d -not -name ".*")
+techpack-dirs := $(shell find $(srctree)/techpack -maxdepth 1 -mindepth 1 -type d -not -name ".*" -not -name "oneplus" -not -name "oppo-realme")
+
+ifeq ($(strip $(BRAND_SHOW_FLAG)), oneplus)
+	techpack-dirs += $(srctree)/techpack/oneplus/camera
+	techpack-dirs += $(srctree)/techpack/oneplus/display
+else
+	techpack-dirs += $(srctree)/techpack/oppo-realme/camera
+	techpack-dirs += $(srctree)/techpack/oppo-realme/display
+endif
+
 obj-${TECHPACK} += stub/ $(addsuffix /,$(subst $(srctree)/techpack/,,$(techpack-dirs)))
 
-techpack-header-dirs := $(shell find $(srctree)/techpack -maxdepth 1 -mindepth 1 -type d -not -name ".*")
+techpack-header-dirs := $(shell find $(srctree)/techpack -maxdepth 1 -mindepth 1 -type d -not -name ".*" -not -name "oneplus" -not -name "oppo-realme")
+
+ifeq ($(strip $(BRAND_SHOW_FLAG)), oneplus)
+	techpack-header-dirs += $(srctree)/techpack/oneplus/camera
+	techpack-header-dirs += $(srctree)/techpack/oneplus/display
+else
+	techpack-header-dirs += $(srctree)/techpack/oppo-realme/camera
+	techpack-header-dirs += $(srctree)/techpack/oppo-realme/display
+endif
+
 header-${TECHPACK} += $(addsuffix /include/uapi/,$(subst $(srctree)/techpack/,,$(techpack-header-dirs)))
