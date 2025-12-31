@@ -5109,7 +5109,7 @@
 //#ifdef VENDOR_EDIT
 &qupv3_se2_i2c {
 	status = "ok";
-	#include "pm8008.dtsi"
+	#include "../common/pm8008.dtsi"
 };
 
 &pm8008_8 {
